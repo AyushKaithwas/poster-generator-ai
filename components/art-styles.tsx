@@ -1,41 +1,56 @@
 import Image from "next/image";
 
-export function ArtStyles() {
+export function ArtStyles({ setForm }: { setForm: any }) {
   return (
     <>
       <div className="grid grid-cols-4 gap-5">
-        <ArtBox styleName="Art Deco" />
-        <ArtBox styleName="Art Nouveau" />
-        <ArtBox styleName="Baroque" />
-        <ArtBox styleName="Bauhaus" />
-        <ArtBox styleName="Constructivism" />
-        <ArtBox styleName="Cubism" />
-        <ArtBox styleName="Cyberpunk" />
-        <ArtBox styleName="Dadaism" />
-        <ArtBox styleName="Expressionist" />
-        <ArtBox styleName="Futurism" />
-        <ArtBox styleName="Geometric" />
-        <ArtBox styleName="Gothic" />
-        <ArtBox styleName="Graffiti" />
-        <ArtBox styleName="Impressionism" />
-        <ArtBox styleName="Minimalist" />
-        <ArtBox styleName="Neo-impressionism" />
-        <ArtBox styleName="Op Art" />
-        <ArtBox styleName="Pop Art" />
-        <ArtBox styleName="Psychedelic" />
-        <ArtBox styleName="Realism" />
-        <ArtBox styleName="Romanticism" />
-        <ArtBox styleName="Steampunk" />
-        <ArtBox styleName="Surrealist" />
-        <ArtBox styleName="Victorian" />
+        <ArtBox styleName="Art Deco" setForm={setForm} />
+        <ArtBox styleName="Art Nouveau" setForm={setForm} />
+        <ArtBox styleName="Baroque" setForm={setForm} />
+        <ArtBox styleName="Bauhaus" setForm={setForm} />
+        <ArtBox styleName="Constructivism" setForm={setForm} />
+        <ArtBox styleName="Cubism" setForm={setForm} />
+        <ArtBox styleName="Cyberpunk" setForm={setForm} />
+        <ArtBox styleName="Dadaism" setForm={setForm} />
+        <ArtBox styleName="Expressionist" setForm={setForm} />
+        <ArtBox styleName="Futurism" setForm={setForm} />
+        <ArtBox styleName="Geometric" setForm={setForm} />
+        <ArtBox styleName="Gothic" setForm={setForm} />
+        <ArtBox styleName="Graffiti" setForm={setForm} />
+        <ArtBox styleName="Impressionism" setForm={setForm} />
+        <ArtBox styleName="Minimalist" setForm={setForm} />
+        <ArtBox styleName="Neo-impressionism" setForm={setForm} />
+        <ArtBox styleName="Op Art" setForm={setForm} />
+        <ArtBox styleName="Pop Art" setForm={setForm} />
+        <ArtBox styleName="Psychedelic" setForm={setForm} />
+        <ArtBox styleName="Realism" setForm={setForm} />
+        <ArtBox styleName="Romanticism" setForm={setForm} />
+        <ArtBox styleName="Steampunk" setForm={setForm} />
+        <ArtBox styleName="Surrealist" setForm={setForm} />
+        <ArtBox styleName="Victorian" setForm={setForm} />
       </div>
     </>
   );
 }
 
-function ArtBox({ styleName }: { styleName: string }) {
+function ArtBox({
+  styleName,
+  setForm: setForm,
+}: {
+  styleName: string;
+  setForm: any;
+}) {
   return (
-    <div className="flex flex-col items-center">
+    <button
+      className="flex flex-col items-center"
+      onClick={(e) => {
+        e.preventDefault();
+        setForm((prev) => ({
+          ...prev,
+          ["style"]: styleName,
+        }));
+      }}
+    >
       <Image
         src={`/artstyles/${styleName}.png`}
         height={70}
@@ -44,6 +59,6 @@ function ArtBox({ styleName }: { styleName: string }) {
         className="rounded-sm"
       />
       <h1 className="text-[0.7rem]">{styleName}</h1>
-    </div>
+    </button>
   );
 }
