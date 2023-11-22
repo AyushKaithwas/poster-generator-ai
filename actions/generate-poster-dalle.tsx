@@ -12,33 +12,38 @@ export async function GeneratePosterDalle(form: {
   color: string;
   style: string;
 }) {
+  let user, responseS3, picture;
   try {
     const session = await getServerSession(authOptions);
     if (!session?.user?.email) {
-      redirect("/api/auth/signIn");
+      throw new Error("No session");
     }
+
+    user = await prisma.user.findUnique({
+      where: {
+        email: session.user.email,
+      },
+    });
+    if (!user) {
+      throw new Error("User not found");
+    }
+  } catch (error) {
+    console.log(error);
+    redirect("/api/auth/signin");
+  }
+  try {
     const base64EncodedImage = await openai.images.generate({
       model: "dall-e-3",
       prompt: `A poster for an event described as ${form.description} with the theme color ${form.color} and the art style ${form.style}, high quality, trending on art station, unreal engine graphics quality`,
       response_format: "b64_json",
       size: "1024x1792",
     });
-    // const base64EncodedImage = "sample";
-    const user = await prisma.user.findUnique({
-      where: {
-        email: session.user.email,
-      },
-    });
-    if (!user) {
-      redirect("/api/auth/signIn");
-    }
-    const picture = await prisma.picture.create({
-      data: {
-        userId: user.id,
-      },
-    });
-    console.log(picture);
     if (base64EncodedImage.data[0].b64_json) {
+      picture = await prisma.picture.create({
+        data: {
+          userId: user.id,
+        },
+      });
       const params = {
         Bucket: process.env.BUCKET_NAME,
         Key: picture.id,
@@ -46,14 +51,13 @@ export async function GeneratePosterDalle(form: {
         ContentEncoding: "base64",
         ContentType: "image/png",
       };
-      const res = await s3Client.send(new PutObjectCommand(params));
-      redirect("/collection");
+      responseS3 = await s3Client.send(new PutObjectCommand(params));
     } else {
       throw new Error("No image generated");
     }
-    // redirect(`/generate?status=sucess`);
   } catch (error) {
     console.log(error);
-    redirect("/generate?status=error");
   }
+
+  if (responseS3) redirect(`/poster/${picture?.id}`);
 }

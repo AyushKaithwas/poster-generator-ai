@@ -6,12 +6,21 @@ import { ArtStyles } from "@/components/art-styles";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect, useCallback } from "react";
 import { Icons } from "@/components/ui/animate-spin";
+import { useSession } from "next-auth/react";
 import { GeneratePosterDalle } from "@/actions/generate-poster-dalle";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import Link from "next/link";
+import {
+  redirect,
+  usePathname,
+  useRouter,
+  useSearchParams,
+} from "next/navigation";
 import Image from "next/image";
 
 export default function GeneratePage() {
+  const { data: session } = useSession();
+  if (!session) {
+    redirect("/api/auth/signin");
+  }
   const [form, setForm] = useState({
     description: "",
     color: "",
@@ -74,7 +83,12 @@ export default function GeneratePage() {
             <Label htmlFor="">3. Select the art style</Label>
             <ArtStyles setForm={setForm} />
           </div>
-          <Button onClick={handleSubmit} type="submit" className="w-full">
+          <Button
+            onClick={handleSubmit}
+            type="submit"
+            className="w-full"
+            disabled={pending}
+          >
             {pending ? (
               <Icons.spinner className="h-4 w-4 animate-spin" />
             ) : (
@@ -84,7 +98,13 @@ export default function GeneratePage() {
         </form>
       )}
 
-      <Image src="/eye-logo.png" alt="test" height={400} width={400} />
+      <Image
+        src="/eye-logo.png"
+        alt="test"
+        height={400}
+        width={400}
+        className="mt-6"
+      />
     </main>
   );
 
@@ -101,11 +121,5 @@ export default function GeneratePage() {
     e.preventDefault();
     setPending(true);
     const response = await GeneratePosterDalle(form);
-    if (response.data[0].url === undefined) {
-      setError(true);
-    } else {
-      setImgUrl(response.data[0].url);
-    }
-    setPending(false);
   }
 }
