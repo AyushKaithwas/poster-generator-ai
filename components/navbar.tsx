@@ -13,7 +13,7 @@ import { MenuIcon } from "lucide-react";
 
 export function Navbar() {
   return (
-    <header className="dark:bg-secondary">
+    <header className="border-b-2 border-primary">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <PrimaryLink href="/">
           <div className="flex items-center gap-2">
@@ -24,7 +24,7 @@ export function Navbar() {
               alt="Poster Generator"
               className="h-10 w-10"
             />
-            <h1 className="font-bold">Poster Generator AI</h1>
+            <h1 className="font-bold">POSTER GENERATOR AI</h1>
           </div>
         </PrimaryLink>
         <DropdownMenu>

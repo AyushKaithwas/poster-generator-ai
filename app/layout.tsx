@@ -21,10 +21,12 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   const session = await getServerSession(authOptions);
+  console.log(inter.className);
+
   return (
     <html lang="en">
       <SessionProvider session={session}>
-        <body className={inter.className}>
+        <body className={`${inter.className} h-[100vh]`}>
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
