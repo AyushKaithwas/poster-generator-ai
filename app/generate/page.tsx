@@ -29,7 +29,6 @@ export default function GeneratePage() {
   const [pending, setPending] = useState(false);
   const [error, setError] = useState(false);
   const [imgUrl, setImgUrl] = useState("");
-  console.log(form);
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const router = useRouter();
@@ -50,7 +49,7 @@ export default function GeneratePage() {
   }, [resetParams, searchParams]);
 
   return (
-    <main className="p-7">
+    <main className="p-7 container">
       {error ? (
         <div className=" text-center">
           <h1 className="text-red-500">Unexpected Error Occurred</h1>
@@ -86,7 +85,7 @@ export default function GeneratePage() {
           <Button
             onClick={handleSubmit}
             type="submit"
-            className="w-full"
+            className="w-full p-10 font-bold text-lg my-10"
             disabled={pending}
           >
             {pending ? (
@@ -103,7 +102,7 @@ export default function GeneratePage() {
         alt="test"
         height={400}
         width={400}
-        className="mt-6"
+        className="mt-6 md:hidden inline"
       />
     </main>
   );

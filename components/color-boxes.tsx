@@ -35,7 +35,10 @@ function ColorBox({
   return (
     <>
       <button
-        className={cn("flex flex-col gap-3 w-10 h-10 border rounded-sm", color)}
+        className={cn(
+          "flex flex-col gap-3 md:w-24 md:h-24 w-10 h-10 border rounded-sm",
+          color
+        )}
         onClick={(e) => {
           e.preventDefault();
           const color = extractColor(e.target.className);

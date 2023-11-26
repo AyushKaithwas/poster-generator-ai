@@ -10,11 +10,15 @@ import Image from "next/image";
 import { PrimaryLink } from "./primary-link";
 import { ModeToggle } from "./theme-switch-button";
 import { MenuIcon } from "lucide-react";
-
-export function Navbar() {
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
+import { signOut } from "next-auth/react";
+import SignOut from "./signout";
+export async function Navbar() {
+  const session = await getServerSession(authOptions);
   return (
     <header className="border-b-2 border-primary">
-      <div className="container mx-auto flex h-16 items-center justify-between px-4">
+      <div className=" flex h-16 items-center justify-between md:px-32 px-5">
         <PrimaryLink href="/">
           <div className="flex items-center gap-2">
             <Image
@@ -40,6 +44,13 @@ export function Navbar() {
             </DropdownMenuItem>
             <DropdownMenuItem>
               <PrimaryLink href="/collection">Collection</PrimaryLink>
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              {session ? (
+                <SignOut>Sign Out</SignOut>
+              ) : (
+                <PrimaryLink href="/api/auth/signin">Sign In</PrimaryLink>
+              )}
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

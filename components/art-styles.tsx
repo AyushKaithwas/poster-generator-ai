@@ -42,7 +42,7 @@ function ArtBox({
 }) {
   return (
     <button
-      className="flex flex-col items-center"
+      className="flex flex-col items-start"
       onClick={(e) => {
         e.preventDefault();
         setForm((prev) => ({
@@ -56,9 +56,9 @@ function ArtBox({
         height={70}
         width={70}
         alt={`${styleName} art style`}
-        className="rounded-sm"
+        className="rounded-sm md:h-32 md:w-auto"
       />
-      <h1 className="text-[0.7rem]">{styleName}</h1>
+      <h1 className="md:text-[1rem] text-[0.7rem]">{styleName}</h1>
     </button>
   );
 }

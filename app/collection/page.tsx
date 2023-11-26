@@ -29,7 +29,6 @@ export default async function Collection() {
       {pictures ? (
         pictures.map((picture) => {
           const url = `https://${process.env.BUCKET_NAME}.s3.amazonaws.com/${picture.id}`;
-          console.log(url);
           return (
             <Link key={picture.id} href={`/poster/${picture.id}`}>
               <Image
