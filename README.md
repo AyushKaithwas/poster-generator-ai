@@ -1,4 +1,4 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+![Screenshot from 2023-12-18 17-52-33](https://github.com/AyushKaithwas/poster-generator-ai/assets/86650576/c77b7eb9-689a-4871-b052-a031a73eb20a)This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
 
@@ -34,3 +34,11 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Screenshots of Website (I will deploy after getting Stripe Payment Gateway Verified)
+
+![Screenshot from 2023-12-18 17-52-18](https://github.com/AyushKaithwas/poster-generator-ai/assets/86650576/199ff630-66a1-46fc-909e-75f84e8017dc)
+![Screenshot from 2023-12-18 17-52-33](https://github.com/AyushKaithwas/poster-generator-ai/assets/86650576/4375471a-5616-4109-927b-c384bb0fec4b)
+![Screenshot from 2023-12-18 17-53-28](https://github.com/AyushKaithwas/poster-generator-ai/assets/86650576/d8c37b27-28d8-431c-8f9c-0befa9cec5d0)
+![Screenshot from 2023-12-18 17-53-35](https://github.com/AyushKaithwas/poster-generator-ai/assets/86650576/52b5fd2b-c552-4b62-8b84-01c4c184ef4d)
+
