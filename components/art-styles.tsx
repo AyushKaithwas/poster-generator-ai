@@ -1,5 +1,11 @@
 import Image from "next/image";
 
+type FormState = {
+  description: string;
+  color: string;
+  style: string;
+};
+
 export function ArtStyles({ setForm }: { setForm: any }) {
   return (
     <>
@@ -38,7 +44,7 @@ function ArtBox({
   setForm: setForm,
 }: {
   styleName: string;
-  setForm: any;
+  setForm: React.Dispatch<React.SetStateAction<FormState>>;
 }) {
   return (
     <button

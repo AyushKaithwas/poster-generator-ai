@@ -25,7 +25,7 @@ export default async function Collection() {
   const pictures = user?.Picture;
 
   return (
-    <div className="flex p-10 gap-5 flex-col md:flex-row">
+    <div className="flex p-10 gap-5 flex-col md:flex-row min-h-[80vh]">
       {pictures ? (
         pictures.map((picture) => {
           const url = `https://${process.env.BUCKET_NAME}.s3.amazonaws.com/${picture.id}`;

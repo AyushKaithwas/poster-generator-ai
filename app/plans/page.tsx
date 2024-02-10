@@ -10,9 +10,9 @@ import {
 
 export default function Plans() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-[80vh] p-5 gap-24">
+    <div className="flex flex-col items-center justify-center min-h-[80vh] p-10 md:gap-24 gap-10">
       <h1 className="font-semibold text-3xl">Buy Credits</h1>
-      <div className="flex gap-16">
+      <div className="flex gap-16 md:flex-row flex-col">
         <Card className="w-[300px]">
           <CardHeader>
             <CardTitle>Personal</CardTitle>

@@ -1,6 +1,16 @@
 import { cn } from "@/lib/utils";
 
-export function ColorBoxes({ setForm }: { setForm: any }) {
+type FormState = {
+  description: string;
+  color: string;
+  style: string;
+};
+
+export function ColorBoxes({
+  setForm,
+}: {
+  setForm: React.Dispatch<React.SetStateAction<FormState>>;
+}) {
   return (
     <>
       <div className="grid grid-cols-5 gap-5">
@@ -22,7 +32,7 @@ export function ColorBoxes({ setForm }: { setForm: any }) {
 function extractColor(className: string) {
   const regex = /bg-([a-zA-Z]+)(?:-|\s|$)/;
   const match = className.match(regex);
-  return match ? match[1] : null;
+  return match ? match[1] : "";
 }
 
 function ColorBox({
@@ -30,7 +40,7 @@ function ColorBox({
   setForm: setForm,
 }: {
   colorClass: string;
-  setForm: any;
+  setForm: React.Dispatch<React.SetStateAction<FormState>>;
 }) {
   return (
     <>
@@ -41,11 +51,15 @@ function ColorBox({
         )}
         onClick={(e) => {
           e.preventDefault();
-          const color = extractColor(e.target.className);
-          setForm((prev) => ({
-            ...prev,
-            ["color"]: color,
-          }));
+          const target = e.target as HTMLElement;
+          const extractedColor = extractColor(target.className);
+          if (extractedColor) {
+            // Check if a color is extracted
+            setForm((prev) => ({
+              ...prev,
+              color: extractedColor,
+            }));
+          }
         }}
       />
     </>

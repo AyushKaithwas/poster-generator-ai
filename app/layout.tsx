@@ -6,6 +6,7 @@ import { Navbar } from "@/components/navbar";
 import { authOptions } from "@/lib/auth";
 import { SessionProvider } from "@/components/session-provider";
 import { getServerSession } from "next-auth";
+import { Footer } from "@/components/footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -34,6 +35,7 @@ export default async function RootLayout({
           >
             <Navbar />
             {children}
+            <Footer />
           </ThemeProvider>
         </body>
       </SessionProvider>

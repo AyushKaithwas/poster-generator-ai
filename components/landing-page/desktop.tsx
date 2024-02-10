@@ -29,15 +29,13 @@ export function DesktopLanding({ className }: { className: string }) {
               GENERATE
             </Button>
           </Link>
-          <Link href="/gallery">
-            <Button
-              variant="outline"
-              className="font-bold w-50 text-primary"
-              disabled
-            >
-              GALLERY (coming soon)
-            </Button>
-          </Link>
+          <Button
+            variant="outline"
+            className="font-bold w-50 text-primary"
+            disabled
+          >
+            GALLERY (coming soon)
+          </Button>
         </div>
       </div>
       <div className="flex gap-10 items-center">

@@ -40,15 +40,14 @@ export function MobileLanding({ className }: { className: string }) {
             GENERATE
           </Button>
         </Link>
-        <Link href="/gallery">
-          <Button
-            variant="outline"
-            className="font-bold w-52 text-primary"
-            disabled
-          >
-            GALLERY (coming soon)
-          </Button>
-        </Link>
+
+        <Button
+          variant="outline"
+          className="font-bold w-52 text-primary"
+          disabled
+        >
+          GALLERY (coming soon)
+        </Button>
       </div>
       <div className="flex flex-row gap-20 relative">
         <Image
