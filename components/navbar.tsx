@@ -36,14 +36,17 @@ export async function Navbar() {
             <MenuIcon />
           </DropdownMenuTrigger>
           <DropdownMenuContent>
-            <DropdownMenuItem>
+            {/* <DropdownMenuItem>
               <ModeToggle />
-            </DropdownMenuItem>
+            </DropdownMenuItem> */}
             <DropdownMenuItem>
               <PrimaryLink href="/generate">Generate</PrimaryLink>
             </DropdownMenuItem>
             <DropdownMenuItem>
               <PrimaryLink href="/collection">Collection</PrimaryLink>
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <PrimaryLink href="/plans">Buy Credits</PrimaryLink>
             </DropdownMenuItem>
             <DropdownMenuItem>
               {session ? (

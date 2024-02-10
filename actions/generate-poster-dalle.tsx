@@ -24,6 +24,7 @@ export async function GeneratePosterDalle(form: {
         email: session.user.email,
       },
     });
+
     if (!user) {
       throw new Error("User not found");
     }
@@ -38,26 +39,38 @@ export async function GeneratePosterDalle(form: {
       response_format: "b64_json",
       size: "1024x1792",
     });
-    if (base64EncodedImage.data[0].b64_json) {
-      picture = await prisma.picture.create({
-        data: {
-          userId: user.id,
-        },
-      });
-      const params = {
-        Bucket: process.env.BUCKET_NAME,
-        Key: picture.id,
-        Body: Buffer.from(base64EncodedImage.data[0].b64_json, "base64"),
-        ContentEncoding: "base64",
-        ContentType: "image/png",
-      };
-      responseS3 = await s3Client.send(new PutObjectCommand(params));
-    } else {
+    if (!base64EncodedImage.data[0].b64_json)
       throw new Error("No image generated");
-    }
+
+    picture = await prisma.picture.create({
+      data: {
+        userId: user.id,
+      },
+    });
+    const params = {
+      Bucket: process.env.BUCKET_NAME,
+      Key: picture.id,
+      Body: Buffer.from(base64EncodedImage.data[0].b64_json, "base64"),
+      ContentEncoding: "base64",
+      ContentType: "image/png",
+    };
+    responseS3 = await s3Client.send(new PutObjectCommand(params));
+    const updatedUser = await prisma.user.update({
+      where: {
+        id: user.id,
+      },
+      data: {
+        credits: {
+          decrement: 1,
+        },
+      },
+    });
+    console.log("User credits updated:", updatedUser);
   } catch (error) {
     console.log(error);
+    redirect(`/generate?status=error`);
+    return;
   }
 
-  if (responseS3) redirect(`/poster/${picture?.id}`);
+  redirect(`/poster/${picture?.id}`);
 }
