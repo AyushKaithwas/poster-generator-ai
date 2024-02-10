@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "postinstall": "prisma generate"
+    "postinstall": "cd packages/database/prisma/ prisma generate"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.454.0",
