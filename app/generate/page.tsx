@@ -58,6 +58,7 @@ export default function GeneratePage() {
       ) : imgUrl ? (
         <Image
           src={imgUrl}
+          placeholder="blur"
           alt="The generated poster"
           height={400}
           width={400}
@@ -99,6 +100,7 @@ export default function GeneratePage() {
 
       <Image
         src="/eye-logo.png"
+        placeholder="blur"
         alt="test"
         height={400}
         width={400}

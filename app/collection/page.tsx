@@ -36,6 +36,7 @@ export default async function Collection() {
                 alt="Your generated image"
                 height={400}
                 width={400}
+                placeholder="blur"
                 key={picture.id}
                 className=" "
               />

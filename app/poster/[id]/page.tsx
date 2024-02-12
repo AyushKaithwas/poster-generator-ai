@@ -10,6 +10,7 @@ export default function Poster({ params }: { params: { id: string } }) {
       </Link>
       <Image
         src={imgUrl}
+        placeholder="blur"
         alt="Your generated poster"
         height={400}
         width={400}

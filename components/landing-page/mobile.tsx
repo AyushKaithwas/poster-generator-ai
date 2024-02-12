@@ -22,12 +22,14 @@ export function MobileLanding({ className }: { className: string }) {
       </div>
       <div className="flex flex-row gap-20 relative">
         <Image
+          placeholder="blur"
           src="/posters/poster1.png"
           alt="Artistic poster of a man and woman"
           height={100}
           width={100}
         />
         <Image
+          placeholder="blur"
           src="/posters/poster2.png"
           alt="Artistic poster of a man and woman"
           height={100}
@@ -51,12 +53,14 @@ export function MobileLanding({ className }: { className: string }) {
       </div>
       <div className="flex flex-row gap-20 relative">
         <Image
+          placeholder="blur"
           src="/posters/poster3.png"
           alt="Artistic poster of a man and woman"
           height={100}
           width={100}
         />
         <Image
+          placeholder="blur"
           src="/posters/poster4.png"
           alt="Artistic poster of a man and woman"
           height={100}

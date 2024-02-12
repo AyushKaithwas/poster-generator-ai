@@ -59,6 +59,7 @@ function ArtBox({
     >
       <Image
         src={`/artstyles/${styleName}.png`}
+        placeholder="blur"
         height={70}
         width={70}
         alt={`${styleName} art style`}

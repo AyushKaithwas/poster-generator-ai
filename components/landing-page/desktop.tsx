@@ -42,18 +42,21 @@ export function DesktopLanding({ className }: { className: string }) {
         <div className="flex-col gap-5 lg:flex hidden">
           <Image
             src="/posters/poster1.png"
+            placeholder="blur"
             alt="Artistic poster of a man and woman"
             height={150}
             width={150}
           />
           <Image
             src="/posters/poster2.png"
+            placeholder="blur"
             alt="Artistic poster of a man and woman"
             height={150}
             width={150}
           />
           <Image
             src="/posters/poster3.png"
+            placeholder="blur"
             alt="Artistic poster of a man and woman"
             height={150}
             width={150}
@@ -62,6 +65,7 @@ export function DesktopLanding({ className }: { className: string }) {
         <Image
           src="/posters/poster4-border-gradient.png"
           alt="Art of astronaut in space"
+          placeholder="blur"
           height={500}
           width={500}
           className="h-auto w-96 mt-5 min-w-[140px] max-w-[400px]"

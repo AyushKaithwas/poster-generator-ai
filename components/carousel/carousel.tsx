@@ -8,6 +8,7 @@ export default function Carousel() {
         <div id="slide-1">
           <Image
             className="img-fluid"
+            placeholder="blur"
             src="/poster-eg-1.png"
             height={400}
             width={400}
@@ -17,6 +18,7 @@ export default function Carousel() {
         <div id="slide-2">
           <Image
             className="img-fluid"
+            placeholder="blur"
             src="/poster-eg-2.png"
             height={400}
             width={400}

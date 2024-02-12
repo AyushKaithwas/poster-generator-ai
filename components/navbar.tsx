@@ -23,6 +23,7 @@ export async function Navbar() {
           <div className="flex items-center gap-2">
             <Image
               src="/eye-logo.png"
+              placeholder="blur"
               width={40}
               height={40}
               alt="Poster Generator"
